@@ -1,14 +1,20 @@
 package main
 
 import (
-	"forum/internal/app"
+	"fmt"
+	"forum/internal/handler"
+	"forum/internal/server"
 	"log"
 )
 
-const cfgFilePath = "configs/config.json"
+const port = ":8888"
 
 func main() {
-	if err := app.Run(cfgFilePath); err != nil {
-		log.Fatalf("ERROR: %v", err)
+	handler := handler.NewHandler(services)
+
+	server := new(server.Server)
+	fmt.Printf("Starting server at port %s\nhttp://localhost%s/\n", port, port)
+	if err := server.Run(port, handler.InitRoutes()); err != nil {
+		log.Fatal(err)
 	}
 }
