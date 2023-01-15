@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+</head>
+    <body>
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" id="home" aria-current="page" href="/">Home</a>
+              </li>
+              <!-- Category Dropdown -->
+              <form action="/" method="get">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                  </a>
+                  <ul class="dropdown-menu ps-2" aria-labelledby="navbarDropdown">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="category" value="IT" id="flexCheckDefault" >
+                      <label class="form-check-label" for="flexCheckDefault">
+                        IT
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="category" value="Sport" id="flexCheckChecked" >
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Sport
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="category" value="Education" id="flexCheckChecked" >
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Education
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="category" value="Business" id="flexCheckChecked" >
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Business
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="category" value="Other" id="flexCheckChecked">
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Other
+                      </label>
+                    </div>
+                    <li><hr class="dropdown-divider me-2"></li>
+                    <li> 
+                      
+                        <input class="btn btn-outline-primary" type="submit" value="Show">
+                        <input class="btn btn-outline-success mx-1" type="reset" value="Reset">
+
+                    </li>
+                  </ul>
+                </li>
+              </form>
+
+              {{if .Username}}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{.Username}}
+                </a>
+                <form action="/" method="get">
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/my-posts">My Posts</a></li>
+                  <li><a class="dropdown-item" href="/my-favourites">My Favourites</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/post/create" style="color: rgb(6, 212, 58);">Create Post</a></li>
+                </ul>
+              </form>
+              </li>
+              {{end}}
+            </ul>
+
+            <form class="d-flex">
+            {{if .Username}}
+              <a href="/log-out" class="btn btn-outline-danger">Log Out</a>
+            {{else}}
+              <a href="/auth/sign-in" class="btn btn-outline-primary mx-1">Sign In</a>
+              <a href="/auth/sign-up" class="btn btn-outline-primary">Sign Up</a>
+            {{end}}
+          </form>
+          </div>
+        </div>  
+      </nav>
+    </body>
+</html>
