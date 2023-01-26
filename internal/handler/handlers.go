@@ -20,5 +20,7 @@ func (h *Handler) InitRoutes() http.Handler {
 	mux.HandleFunc("/auth/sign-up", h.signUp)
 	mux.HandleFunc("/auth/sign-in", h.signIn)
 	mux.HandleFunc("/log-out", h.logOut)
+	mux.HandleFunc("/post/create", h.createPost)
+	mux.HandleFunc("/my-posts", h.myPosts)
 	return mux
 }
