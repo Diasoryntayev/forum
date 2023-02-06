@@ -41,7 +41,7 @@ func (h *Handler) createPost(w http.ResponseWriter, r *http.Request) {
 		err := h.services.CreatePost(&post)
 		if err != nil {
 			log.Println(err)
-			h.ErrorPage(w, http.StatusInternalServerError, "can not creat post")
+			h.ErrorPage(w, http.StatusInternalServerError, "can't creat post")
 		}
 		http.Redirect(w, r, "/", http.StatusSeeOther)
 	default:
